@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "datatables.net-dt": "^1.13.4",
+    "simple-datatables": "^7.2.0"
+  }
+}
