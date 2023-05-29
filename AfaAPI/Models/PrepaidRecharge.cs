@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Alfa.Models;
+namespace AlfaAPI.Models;
 
 public partial class PrepaidRecharge
 {
@@ -49,4 +49,9 @@ public partial class PrepaidRecharge
     public decimal? PrFiscalstamp { get; set; }
 
     public string? Creditcard { get; set; }
+
+    public static implicit operator PrepaidRecharge(List<PrepaidRecharge> v)
+    {
+        throw new NotImplementedException();
+    }
 }

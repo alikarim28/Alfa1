@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Alfa.Models;
+using AlfaAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Alfa.Data;
+namespace AlfaAPI.Data;
 
 public partial class ModelContext : DbContext
 {

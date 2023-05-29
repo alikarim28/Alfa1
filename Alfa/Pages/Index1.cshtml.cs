@@ -1,5 +1,5 @@
-using Alfa.Data;
-using Alfa.Models;
+using AlfaAPI.Data;
+using AlfaAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +11,10 @@ namespace Alfa.Pages
 {
     public class Index1Model : PageModel
     {
-        private readonly Alfa.Data.ModelContext _context;
+        private readonly ModelContext _context;
         public string? BillType;
 
-        public Index1Model(Alfa.Data.ModelContext context)
+        public Index1Model(ModelContext context)
         {
             _context = context;
         }
@@ -36,19 +36,7 @@ namespace Alfa.Pages
         public async Task OnGetAsync()
         {
 
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                if (SearchString.Contains("x")) {
-                    prepaidRecharges = await _context.PrepaidRecharges.Where(c => c.Creditcard == SearchString).OrderByDescending(c => c.PrDate).Take(3).ToListAsync();
-                }
-                else if (Regex.IsMatch(SearchString, @"^\d{7,8}$")) {
-                    prepaidRecharges = await _context.PrepaidRecharges.Where(c => c.PrMsisdn == SearchString).OrderByDescending(c => c.PrDate).ToListAsync();
-                }
-                else if (SearchString.Contains("-"))
-                {
-                    prepaidRecharges = await _context.PrepaidRecharges.Where(c => (c.PrTransaction) == SearchString).OrderByDescending(c => c.PrDate).ToListAsync();
-                }
-            }
+           
         }
 
         public  IActionResult OnPostGetResult([FromBody] MyModel T)
