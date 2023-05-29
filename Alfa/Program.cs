@@ -1,8 +1,15 @@
+using Alfa.Data;
+using Alfa.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+
+builder.Services.AddDbContext<ModelContext>(options => options.UseOracle(builder.Configuration.GetConnectionString("DBConn")));
+builder.Services.AddAntiforgery(p => p.HeaderName = "XSRF-TOKEN");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
